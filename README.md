@@ -4,7 +4,7 @@
 Right now... jack
 
 ## What we tried and failed at
-Try not, do or dounut, there is no try
+Try not, do or donut, there is no try
 
 ## Known Bugs
 None so far
