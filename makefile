@@ -15,7 +15,7 @@ args.o: args.c args.h
 	$(CC) -c args.c args.h
 
 run:
-	./prog
+	./prog.out
 	make clean
 
 clean:
