@@ -19,4 +19,4 @@ run:
 	make clean
 
 clean:
-	rm *.o *.out
+	rm *.o *.out *.gch

@@ -1,7 +1,7 @@
 # stuy-cs-systems-p1_shell
 
 ## What Shell Does
-Right now... jack
+All processes that run through child processes
 
 ## What we tried and failed at
 Try not, do or donut, there is no try
@@ -10,4 +10,3 @@ Try not, do or donut, there is no try
 None so far
 
 # Files
-
