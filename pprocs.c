@@ -6,7 +6,7 @@
 
 int pprocs(char *term_in) {
   if(should_exit(term_in)) {
-    execl("make clean", NULL);
+    execl("make", "clean");
     exit(0);
   }
   if(should_cd(term_in)) chdir(term_in);
@@ -23,7 +23,7 @@ int should_exit(char *term_in) {
 
 int should_cd(char *term_in) {
   if(strcmp(term_in, "cd") == 0) {
-    printf("cd received, committing suicide now\n");
+    printf("cd received, committing apoptosis now\n");
     return 1;
   }
   return 0;

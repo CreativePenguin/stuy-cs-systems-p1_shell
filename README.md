@@ -8,5 +8,6 @@ Try not, do or donut, there is no try
 
 ## Known Bugs
 None so far
+Sometimes the $ sign doesn't show up properly
 
 # Files
