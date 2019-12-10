@@ -14,7 +14,10 @@ int main() {
 		term_in = fgets(term_in, 100, stdin);
 		term_in[strlen(term_in) - 1] = NULL;
 
+		printf("We just failed outside the loop\n");
+
 		if(pprocs(term_in)) {
+			printf("The inside of the loop is reached\n");
 			int f = fork();
 			int status;
 			int child;
