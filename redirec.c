@@ -1,7 +1,10 @@
 #include <stdio.h>
-#include "args.h"
-#incldue "redirec.c"
+#include <unistd.h>
+#include <fcntl.h>
 #include <string.h>
+#include <errno.h>
+#include "args.h"
+#include "redirec.h"
 
 int my_open(char *filename, int flag) {
 	int ans = open(filename, flag);
