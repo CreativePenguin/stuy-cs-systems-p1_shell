@@ -19,7 +19,7 @@ int main() {
 		int child;
     if(pprocs(term_in)) printf("Yay, it works\n");
 		if (f == 0) {
-			char ** to_exec = parse_args(term_in);
+			char ** to_exec = parse_args(term_in, " ");
 			//printf("child: %d, status %d\n", child, status);
 			execvp(to_exec[0], to_exec);
 			return 0;

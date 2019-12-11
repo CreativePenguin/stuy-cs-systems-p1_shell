@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include "args.h"
+#incldue "redirec.c"
+#include <string.h>
 
 int my_open(char *filename, int flag) {
 	int ans = open(filename, flag);
@@ -11,3 +14,13 @@ int my_write(int file, int *buffer, int size) {
 	if(ans < 0) printf("error %d: %s\n", errno, strerror(errno));
 	return ans;
 }
+
+int redirect(char *term_in) {
+  char **to_exec = parse_args(term_in, " ");
+  while(*parse_args) {
+    if(strcmp(parse_args, ">") == 0) strsep();
+  }
+  parse_args
+}
+
+//Remember to close the files with close(filename);
