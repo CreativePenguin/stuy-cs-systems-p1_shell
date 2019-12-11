@@ -9,6 +9,12 @@ int my_open(char *filename, int flag) {
 	return ans;
 }
 
+int my_new_file_open(char *filename, int flag, int permissions) {
+  int ans = open(filename, flag, permissions);
+  if(ans < 0) ans = my_open(filename, O_WRONLY);
+  return ans;
+}
+
 int my_write(int file, int *buffer, int size) {
 	int ans = write(file, buffer, size);
 	if(ans < 0) printf("error %d: %s\n", errno, strerror(errno));
@@ -16,11 +22,13 @@ int my_write(int file, int *buffer, int size) {
 }
 
 int redirect(char *term_in) {
-  char **to_exec = parse_args(term_in, " ");
-  while(*parse_args) {
-    if(strcmp(parse_args, ">") == 0) strsep();
-  }
-  parse_args
+	char **exec = parse_args(term_in, " ");
+  // The number 10 here is random, pick something more substantial alter
+	char *input[10] = (char*) calloc(strlen(exec), sizeof(char * 100));
+	while(*exec) {
+		if(strcmp(*parse_args++, ">") == 0) break;
+	}
+	free(input);
 }
 
 //Remember to close the files with close(filename);
