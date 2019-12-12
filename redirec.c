@@ -3,6 +3,7 @@
 #include <fcntl.h>
 #include <string.h>
 #include <errno.h>
+#include <stdlib.h>
 #include "args.h"
 #include "redirec.h"
 
@@ -24,14 +25,40 @@ int my_write(int file, int *buffer, int size) {
 	return ans;
 }
 
-int redirect(char *term_in) {
+
+
+int should_redirect(char *term_in) {
 	char **exec = parse_args(term_in, " ");
   // The number 10 here is random, pick something more substantial alter
-	char *input[10] = (char*) calloc(strlen(exec), sizeof(char * 100));
-	while(*exec) {
-		if(strcmp(*parse_args++, ">") == 0) break;
+	char **input;
+  int i = 0;
+  input = calloc(strlen(exec), sizeof(char) * 10);
+  int isRedirect = 0;
+  *exec++;
+	while(i < 10) {
+		if(strcmp(*exec, ">") == 0) {
+      isRedirect = 1;
+      break;
+    } else if(strcmp(*exec, "<") == 0) {
+      isRedirect = 1;
+      free(input);
+      i = 0;
+      while(*input) {
+        input[i++] = calloc(strlen(exec), sizeof(char) * 10);
+      }
+      break;
+    } else if(strcmp(*exec, "|") == 0) {
+      //insert pipe function
+    } else {
+      *input++ = *exec++;
+    }
 	}
 	free(input);
+  for(int i = 0; i < 10; i++) {
+    printf("%i, ", input[i]);
+  }
+  printf("\n");
+  return isRedirect;
 }
 
 //Remember to close the files with close(filename);

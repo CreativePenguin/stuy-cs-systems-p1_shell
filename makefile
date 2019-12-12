@@ -5,7 +5,7 @@ else
 endif
 
 
-all: main.o args.o pprocs.o
+all: main.o args.o pprocs.o redirec.o
 	$(CC) -o prog.out main.o args.o pprocs.o redirec.o
 
 main.o: main.c

@@ -13,5 +13,6 @@ char ** parse_args(char * line, char *pat)
 		args[i] = strsep(&curr, pat);
 		i++;
 	}
+  args[i] = NULL;
 	return args;
 }

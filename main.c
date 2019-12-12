@@ -6,6 +6,7 @@
 #include <string.h>
 #include "args.h"
 #include "pprocs.h"
+#include "redirec.h"
 
 int main() {
 	printf("$ ");
@@ -17,7 +18,9 @@ int main() {
 		int f = fork();
 		int status;
 		int child;
-		if(pprocs(term_in)) printf("Yay, it works\n");
+		pprocs(term_in);
+		if(should_redirect(term_in))
+			printf("Redirection detected!! \n");
 		if (f == 0) {
 			char ** to_exec = parse_args(term_in, " ");
 			while(*to_exec) {
