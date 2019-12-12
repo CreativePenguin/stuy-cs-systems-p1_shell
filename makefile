@@ -23,3 +23,6 @@ run:
 
 clean:
 	rm *.o *.out *.gch
+
+memtest:
+	valgrind --leak-check=yes ./prog.out

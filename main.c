@@ -17,7 +17,8 @@ int main() {
 		int f = fork();
 		int status;
 		int child;
-    if(pprocs(term_in)) printf("Yay, it works\n");
+    pprocs(term_in);
+    redirec(term_in);
 		if (f == 0) {
 			char ** to_exec = parse_args(term_in, " ");
       while(*to_exec) {

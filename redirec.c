@@ -24,14 +24,33 @@ int my_write(int file, int *buffer, int size) {
 	return ans;
 }
 
-int redirect(char *term_in) {
+void should_redirect(char *term_in) {
 	char **exec = parse_args(term_in, " ");
   // The number 10 here is random, pick something more substantial alter
 	char *input[10] = (char*) calloc(strlen(exec), sizeof(char * 100));
+  int isRedirect = 0;
+  *exec++;
 	while(*exec) {
-		if(strcmp(*parse_args++, ">") == 0) break;
+		if(strcmp(*exec, ">") == 0) {
+      isRedirect = 1;
+      break;
+    } else if(strcmp(*exec, "<") == 0) {
+      isRedirect = 1;
+      free(input);
+      input = (char*) calloc(strlen(exec), sizeof(char * 100));
+      break;
+    } else if(strcmp(*parse_args, "|") == 0) {
+      //insert pipe function
+    } else {
+      *input++ = *exec++;
+    }
 	}
 	free(input);
+  for(int i = 0; i < 10; i++) {
+    printf("%i, ", input[i]);
+  }
+  printf("\n");
+  return isRedirect;
 }
 
 //Remember to close the files with close(filename);
