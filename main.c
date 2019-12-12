@@ -17,19 +17,19 @@ int main() {
 		int f = fork();
 		int status;
 		int child;
-    if(pprocs(term_in)) printf("Yay, it works\n");
+		if(pprocs(term_in)) printf("Yay, it works\n");
 		if (f == 0) {
 			char ** to_exec = parse_args(term_in, " ");
-      while(*to_exec) {
-        printf("params: %s\n", *to_exec++);
-      }
+			while(*to_exec) {
+				printf("params: %s\n", *to_exec++);
+			}
 			//printf("child: %d, status %d\n", child, status);
 			execvp(to_exec[0], to_exec);
-      free(to_exec);
+			free(to_exec);
 			return 0;
 		}
-    child = wait(&status);
-    printf("$ ");
+		child = wait(&status);
+		printf("$ ");
 		free(term_in);
 	}
 	return 0;
