@@ -25,16 +25,13 @@ int my_write(int file, int *buffer, int size) {
 	return ans;
 }
 
-
-
 int should_redirect(char *term_in) {
 	char **exec = parse_args(term_in, " ");
   // The number 10 here is random, pick something more substantial alter
 	char **input;
-  int i = 0;
+  int i = 1; // Skip first input
   input = calloc(strlen(exec), sizeof(char) * 10);
   int isRedirect = 0;
-  *exec++;
 	while(i < 10) {
 		if(strcmp(*exec, ">") == 0) {
       isRedirect = 1;
@@ -50,7 +47,7 @@ int should_redirect(char *term_in) {
     } else if(strcmp(*exec, "|") == 0) {
       //insert pipe function
     } else {
-      *input++ = *exec++;
+      input[i - 1] = exec[i];
     }
 	}
 	free(input);

@@ -10,7 +10,7 @@
 
 int main() {
 	printf("$ ");
-	while(&free) {
+	while(1) {
 		char * term_in = malloc(100 * sizeof(char));
 		term_in = fgets(term_in, 100, stdin);
 		term_in[strlen(term_in) - 1] = NULL;
