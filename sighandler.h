@@ -1,1 +1,0 @@
-void sighandler(int signo);
