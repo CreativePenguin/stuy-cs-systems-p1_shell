@@ -1,31 +1,14 @@
-ifeq ($(DEBUG), true)
-	CC = gcc -g
-else
-	CC = gcc
-endif
+all: main.o funcs.o
+	gcc -o shell_program main.o funcs.o
 
+main.o: main.c funcs.h
+	gcc -c main.c
 
-all: main.o args.o pprocs.o redirec.o
-	$(CC) -o prog.out main.o args.o pprocs.o redirec.o
-
-main.o: main.c
-	$(CC) -c main.c
-
-args.o: args.c args.h
-	$(CC) -c args.c args.h
-
-pprocs.o: pprocs.c pprocs.h
-	$(CC) -c pprocs.c pprocs.h
-
-redirec.o: redirec.c redirec.h
-	$(CC) -c redirec.c redirec.h
+funcs.o: funcs.c funcs.h
+	gcc -c funcs.c
 
 run:
-	./prog.out
-	make clean
+	./shell_program
 
 clean:
-	rm *.o *.out *.gch
-
-memtest:
-	valgrind --leak-check=yes ./prog.out
+	rm *.o shell_program
